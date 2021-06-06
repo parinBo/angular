@@ -1,0 +1,30 @@
+  <mat-card class="center border" style="background-color: beige;" >
+    <h1>Login</h1>
+    <form (ngSubmit)="onSubmit()" >
+      <mat-form-field class="form-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailForm" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailForm.hasError('email') && !emailForm.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailForm.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-width">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordForm">
+        <button mat-icon-button matSuffix (click)="hide = !hide" >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordForm.hasError('required')" >
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="passwordForm.errors?.minlength " >
+          Password is <strong>more than 6</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" style="margin-left: 40%;" >Signin</button>
+      <a routerLink="/regis" style="margin-left:80%">register</a>
+    </form>
+  </mat-card>

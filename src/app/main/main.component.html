@@ -1,0 +1,54 @@
+<mat-sidenav-container class="example-container"  >
+  <mat-sidenav #sidenav style="width: 150px;" >
+      <mat-selection-list  [multiple]="false">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Hi: {{data.displayName}} </mat-card-title>
+          </mat-card-header>
+          </mat-card>
+        <mat-list-option *ngFor="let menu of typesOfMenu" >
+          <mat-icon matListIcon >{{menu.icon}}</mat-icon>
+          <mat-list-item [routerLink]="menu.link"> {{menu.name}} </mat-list-item>
+        </mat-list-option>
+        <div class="bottom">
+          <mat-list-option >
+            <mat-icon matListIcon>settings</mat-icon>
+            <mat-list-item [routerLink]="" >Setting</mat-list-item>
+          </mat-list-option>
+          <mat-list-option >
+            <mat-icon matListIcon>exit_to_app</mat-icon>
+            <mat-list-item (click)="logout()" >Logout</mat-list-item>
+          </mat-list-option>
+        </div>
+      </mat-selection-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>
+      <mat-toolbar color="primary">
+        <span>My App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" >
+          <mat-icon>share</mat-icon>
+        </button>
+          <ul class="menu-button">
+            <li>
+              <button mat-icon-button routerLink="/Order">
+                <mat-icon matBadge="{{limit}}" matBadgeColor="warn">note</mat-icon>
+              </button>
+            </li>
+            <li>
+              <p><button mat-icon-button  (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button></p>
+            </li>
+          </ul>
+      </mat-toolbar>
+    </p>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+

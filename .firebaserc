@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fund-662cf": {
+      "hosting": {
+        "web-angular": [
+          "fund-662cf"
+        ]
+      }
+    }
+  }
+}

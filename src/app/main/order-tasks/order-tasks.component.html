@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>task{{rate>1?"s":""}} sum:{{rate}}</mat-card-title>
+  </mat-card-header>
+  <mat-card *ngFor="let i of tasks">
+    {{i.name}}
+    <button mat-mini-fab color="accent" class="btn" (click)="onRemove(i)"   >
+      <mat-icon>remove</mat-icon>
+   </button>
+  </mat-card>
+</mat-card>

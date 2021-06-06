@@ -1,0 +1,64 @@
+<mat-card class="center border" style="background-color: beige;" >
+  <h1>Register</h1>
+  <form (ngSubmit)="onSubmit()" >
+    <div class="form-row">
+      <div class="col">
+        <mat-form-field  appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput [formControl]="nameForm" >
+          <mat-error *ngIf="nameForm.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field  appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailForm" placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="emailForm.hasError('email') && !emailForm.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailForm.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]="passwordForm">
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" >
+            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordForm.hasError('required')" >
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="passwordForm.errors?.minlength " >
+            Password is <strong>more than 6</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" >
+          <mat-label>Comfirm your password</mat-label>
+          <input matInput [type]="hide2 ? 'password' : 'text'" [formControl]="conPasswordForm">
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" >
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="conPasswordForm.hasError('required')" >
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="conPasswordForm.errors?.minlength " >
+            Password is <strong>more than 6</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-error *ngIf="conPasswordForm.value!==passwordForm.value " >
+      Password  <strong>is n't match</strong>
+    </mat-error>
+    <button mat-flat-button color="primary" style="margin-left: 40%;" >Signup</button>
+  </form>
+</mat-card>

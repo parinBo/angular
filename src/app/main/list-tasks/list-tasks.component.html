@@ -1,0 +1,6 @@
+<mat-card *ngFor="let i of tasks">
+  {{i.name}}
+  <button mat-mini-fab color="primary" class="btn"  (click)="onAdd(i)"  [disabled]="i.limit==0?true:false" >
+   {{i.limit}}
+ </button>
+</mat-card>
